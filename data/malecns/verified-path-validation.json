@@ -1,0 +1,15 @@
+{
+  "status": "computational structural validation only",
+  "checks": {
+    "all_edges_have_positive_aggregate_synapse_weight": true,
+    "all_required_stages_present": true,
+    "odor_drive_reaches_motor_in_bounded_model": true,
+    "all_edges_have_synapse_partner_evidence": true,
+    "partner_counts_match_aggregate_weights": true,
+    "all_edges_have_primary_post_roi": true,
+    "all_edges_have_presynaptic_transmitter_evidence": true
+  },
+  "motor_rate_baseline": 0.0,
+  "motor_rate_under_dm1_drive": 0.05567,
+  "empirical_validation": "Not performed. This model must be compared with published or newly measured neural/behavioral recordings before biological claims are made."
+}

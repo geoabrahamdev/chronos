@@ -1,0 +1,3445 @@
+{
+  "dataset": "HHMI Janelia MaleCNS v1.0",
+  "pathway": "verified ORN_DM1 to i1 MN chain",
+  "nodes": [
+    {
+      "body": 925639,
+      "type": "ORN_DM1",
+      "stage": "olfactory receptor",
+      "predicted_nt": "acetylcholine",
+      "nt_confidence": 0.967,
+      "consensus_nt": "acetylcholine"
+    },
+    {
+      "body": 10176,
+      "type": "DM1_lPN",
+      "stage": "projection neuron",
+      "predicted_nt": "acetylcholine",
+      "nt_confidence": 0.954,
+      "consensus_nt": "acetylcholine"
+    },
+    {
+      "body": 10209,
+      "type": "LHPV12a1",
+      "stage": "higher-order",
+      "predicted_nt": "gaba",
+      "nt_confidence": 0.777,
+      "consensus_nt": "gaba"
+    },
+    {
+      "body": 13435,
+      "type": "LHAD1f2",
+      "stage": "higher-order",
+      "predicted_nt": "glutamate",
+      "nt_confidence": 0.86,
+      "consensus_nt": "glutamate"
+    },
+    {
+      "body": 515769,
+      "type": "SLP101",
+      "stage": "higher-order",
+      "predicted_nt": "glutamate",
+      "nt_confidence": 0.814,
+      "consensus_nt": "glutamate"
+    },
+    {
+      "body": 15316,
+      "type": "SMP188",
+      "stage": "higher-order",
+      "predicted_nt": "acetylcholine",
+      "nt_confidence": 0.952,
+      "consensus_nt": "acetylcholine"
+    },
+    {
+      "body": 12506,
+      "type": "ExR6",
+      "stage": "higher-order",
+      "predicted_nt": "glutamate",
+      "nt_confidence": 0.628,
+      "consensus_nt": "glutamate"
+    },
+    {
+      "body": 513283,
+      "type": "PEN_a(PEN1)",
+      "stage": "central complex",
+      "predicted_nt": "acetylcholine",
+      "nt_confidence": 0.851,
+      "consensus_nt": "acetylcholine"
+    },
+    {
+      "body": 513284,
+      "type": "EPG",
+      "stage": "central complex",
+      "predicted_nt": "acetylcholine",
+      "nt_confidence": 0.955,
+      "consensus_nt": "acetylcholine"
+    },
+    {
+      "body": 518375,
+      "type": "PFL2",
+      "stage": "central complex",
+      "predicted_nt": "acetylcholine",
+      "nt_confidence": 0.938,
+      "consensus_nt": "acetylcholine"
+    },
+    {
+      "body": 10975,
+      "type": "DNa03",
+      "stage": "descending neuron",
+      "predicted_nt": "acetylcholine",
+      "nt_confidence": 0.96,
+      "consensus_nt": "acetylcholine"
+    },
+    {
+      "body": 800637,
+      "type": "i1 MN",
+      "stage": "VNC motor neuron",
+      "predicted_nt": "histamine",
+      "nt_confidence": 0.507,
+      "consensus_nt": "glutamate"
+    }
+  ],
+  "edges": [
+    {
+      "pre": 925639,
+      "post": 10176,
+      "pre_type": "ORN_DM1",
+      "post_type": "DM1_lPN",
+      "stage": "olfactory receptor \u2192 projection neuron",
+      "synapses": 15,
+      "primary_post_roi": "AL(R)",
+      "roi_status": "AL(R) (15/15 partner rows)",
+      "primary_post_roi_counts": {
+        "AL(R)": 15
+      },
+      "partner_synapse_count": 15,
+      "aggregate_weight_matches_partner_count": true,
+      "unique_presynaptic_sites": 15,
+      "tbar_sites_matched": 15,
+      "tbar_dominant_prediction": "acetylcholine",
+      "tbar_mean_probabilities": {
+        "acetylcholine": 0.87411,
+        "gaba": 0.0244,
+        "glutamate": 0.00042,
+        "octopamine": 0.05543,
+        "serotonin": 0.04236,
+        "dopamine": 0.00247,
+        "histamine": 0.00081
+      },
+      "synapse_coordinate_sample": [
+        {
+          "pre": [
+            44929,
+            25208,
+            17097
+          ],
+          "post": [
+            44938,
+            25217,
+            17084
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.951,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            44941,
+            25212,
+            17146
+          ],
+          "post": [
+            44928,
+            25230,
+            17149
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.981,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            44923,
+            25168,
+            17172
+          ],
+          "post": [
+            44911,
+            25161,
+            17181
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.812,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            45006,
+            25230,
+            17245
+          ],
+          "post": [
+            45005,
+            25214,
+            17235
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.942,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            45013,
+            25099,
+            17246
+          ],
+          "post": [
+            45001,
+            25111,
+            17249
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.967,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            45024,
+            25209,
+            17258
+          ],
+          "post": [
+            45036,
+            25215,
+            17247
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.953,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            45134,
+            25042,
+            17272
+          ],
+          "post": [
+            45140,
+            25057,
+            17275
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.965,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            45045,
+            25171,
+            17284
+          ],
+          "post": [
+            45044,
+            25165,
+            17270
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.952,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            45053,
+            25254,
+            17290
+          ],
+          "post": [
+            45067,
+            25250,
+            17281
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.806,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            45145,
+            25048,
+            17296
+          ],
+          "post": [
+            45143,
+            25058,
+            17280
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.748,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            45311,
+            24975,
+            17462
+          ],
+          "post": [
+            45320,
+            24981,
+            17449
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.834,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            45336,
+            24964,
+            17476
+          ],
+          "post": [
+            45337,
+            24972,
+            17462
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.935,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            46040,
+            24151,
+            17658
+          ],
+          "post": [
+            46039,
+            24134,
+            17664
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.759,
+            0.984
+          ]
+        },
+        {
+          "pre": [
+            45891,
+            24324,
+            17673
+          ],
+          "post": [
+            45878,
+            24331,
+            17662
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.933,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            45945,
+            24315,
+            17680
+          ],
+          "post": [
+            45936,
+            24327,
+            17663
+          ],
+          "primary_post_roi": "AL(R)",
+          "confidence": [
+            0.976,
+            0.994
+          ]
+        }
+      ]
+    },
+    {
+      "pre": 10176,
+      "post": 10209,
+      "pre_type": "DM1_lPN",
+      "post_type": "LHPV12a1",
+      "stage": "projection neuron \u2192 higher-order",
+      "synapses": 211,
+      "primary_post_roi": "LH(R)",
+      "roi_status": "LH(R) (154/211 partner rows)",
+      "primary_post_roi_counts": {
+        "LH(R)": 154,
+        "CA(R)": 48,
+        "CentralBrain-unspecified": 9
+      },
+      "partner_synapse_count": 211,
+      "aggregate_weight_matches_partner_count": true,
+      "unique_presynaptic_sites": 211,
+      "tbar_sites_matched": 211,
+      "tbar_dominant_prediction": "acetylcholine",
+      "tbar_mean_probabilities": {
+        "acetylcholine": 0.97538,
+        "gaba": 0.00646,
+        "glutamate": 0.01204,
+        "octopamine": 0.0028,
+        "serotonin": 0.00089,
+        "dopamine": 0.00242,
+        "histamine": 1e-05
+      },
+      "synapse_coordinate_sample": [
+        {
+          "pre": [
+            30861,
+            13603,
+            27983
+          ],
+          "post": [
+            30838,
+            13616,
+            27976
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.951,
+            0.992
+          ]
+        },
+        {
+          "pre": [
+            31004,
+            13931,
+            28133
+          ],
+          "post": [
+            30991,
+            13938,
+            28150
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.949,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            29424,
+            14456,
+            28340
+          ],
+          "post": [
+            29442,
+            14493,
+            28336
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.921,
+            0.605
+          ]
+        },
+        {
+          "pre": [
+            29457,
+            14516,
+            28357
+          ],
+          "post": [
+            29445,
+            14500,
+            28334
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.827,
+            0.637
+          ]
+        },
+        {
+          "pre": [
+            30072,
+            12979,
+            28735
+          ],
+          "post": [
+            30046,
+            12981,
+            28727
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.846,
+            0.807
+          ]
+        },
+        {
+          "pre": [
+            30084,
+            13045,
+            28863
+          ],
+          "post": [
+            30067,
+            13025,
+            28852
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.874,
+            0.906
+          ]
+        },
+        {
+          "pre": [
+            27709,
+            12975,
+            28870
+          ],
+          "post": [
+            27698,
+            12997,
+            28859
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.899,
+            0.991
+          ]
+        },
+        {
+          "pre": [
+            27793,
+            12966,
+            28871
+          ],
+          "post": [
+            27778,
+            12973,
+            28886
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.968,
+            0.973
+          ]
+        },
+        {
+          "pre": [
+            27564,
+            13036,
+            28909
+          ],
+          "post": [
+            27564,
+            13036,
+            28886
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.928,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            30109,
+            13145,
+            28932
+          ],
+          "post": [
+            30091,
+            13131,
+            28904
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.963,
+            0.705
+          ]
+        },
+        {
+          "pre": [
+            30241,
+            13193,
+            28985
+          ],
+          "post": [
+            30256,
+            13178,
+            28977
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.941,
+            0.809
+          ]
+        },
+        {
+          "pre": [
+            29939,
+            12901,
+            29048
+          ],
+          "post": [
+            29913,
+            12904,
+            29038
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.805,
+            0.818
+          ]
+        },
+        {
+          "pre": [
+            29966,
+            12900,
+            29050
+          ],
+          "post": [
+            29974,
+            12910,
+            29038
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.925,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            26229,
+            11189,
+            29060
+          ],
+          "post": [
+            26222,
+            11164,
+            29068
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.796,
+            0.987
+          ]
+        },
+        {
+          "pre": [
+            29918,
+            12924,
+            29064
+          ],
+          "post": [
+            29917,
+            12925,
+            29042
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.967,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            29859,
+            12804,
+            29079
+          ],
+          "post": [
+            29886,
+            12826,
+            29066
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.97,
+            0.7
+          ]
+        },
+        {
+          "pre": [
+            26315,
+            13773,
+            29093
+          ],
+          "post": [
+            26308,
+            13776,
+            29079
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.843,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            26312,
+            11185,
+            29102
+          ],
+          "post": [
+            26272,
+            11189,
+            29104
+          ],
+          "primary_post_roi": "LH(R)",
+          "confidence": [
+            0.828,
+            0.689
+          ]
+        }
+      ]
+    },
+    {
+      "pre": 10209,
+      "post": 13435,
+      "pre_type": "LHPV12a1",
+      "post_type": "LHAD1f2",
+      "stage": "higher-order \u2192 higher-order",
+      "synapses": 77,
+      "primary_post_roi": "LH(L)",
+      "roi_status": "LH(L) (74/77 partner rows)",
+      "primary_post_roi_counts": {
+        "LH(L)": 74,
+        "SLP(L)": 2,
+        "CentralBrain-unspecified": 1
+      },
+      "partner_synapse_count": 77,
+      "aggregate_weight_matches_partner_count": true,
+      "unique_presynaptic_sites": 77,
+      "tbar_sites_matched": 77,
+      "tbar_dominant_prediction": "gaba",
+      "tbar_mean_probabilities": {
+        "acetylcholine": 0.07373,
+        "gaba": 0.77909,
+        "glutamate": 0.11581,
+        "octopamine": 0.00321,
+        "serotonin": 0.01029,
+        "dopamine": 0.01778,
+        "histamine": 8e-05
+      },
+      "synapse_coordinate_sample": [
+        {
+          "pre": [
+            68269,
+            12272,
+            25359
+          ],
+          "post": [
+            68258,
+            12251,
+            25341
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.933,
+            0.863
+          ]
+        },
+        {
+          "pre": [
+            68548,
+            12031,
+            25538
+          ],
+          "post": [
+            68551,
+            12056,
+            25547
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.967,
+            0.969
+          ]
+        },
+        {
+          "pre": [
+            70448,
+            13632,
+            25711
+          ],
+          "post": [
+            70450,
+            13616,
+            25730
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.977,
+            0.951
+          ]
+        },
+        {
+          "pre": [
+            71017,
+            12891,
+            26706
+          ],
+          "post": [
+            70994,
+            12883,
+            26713
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.955,
+            0.952
+          ]
+        },
+        {
+          "pre": [
+            70999,
+            12914,
+            26754
+          ],
+          "post": [
+            70976,
+            12882,
+            26741
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.96,
+            0.524
+          ]
+        },
+        {
+          "pre": [
+            71425,
+            10962,
+            26809
+          ],
+          "post": [
+            71406,
+            10991,
+            26830
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.918,
+            0.711
+          ]
+        },
+        {
+          "pre": [
+            71422,
+            10969,
+            26835
+          ],
+          "post": [
+            71406,
+            10991,
+            26832
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.959,
+            0.995
+          ]
+        },
+        {
+          "pre": [
+            71395,
+            10970,
+            26839
+          ],
+          "post": [
+            71404,
+            10989,
+            26830
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.761,
+            0.988
+          ]
+        },
+        {
+          "pre": [
+            69206,
+            13389,
+            26860
+          ],
+          "post": [
+            69214,
+            13384,
+            26844
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.9,
+            0.994
+          ]
+        },
+        {
+          "pre": [
+            69933,
+            12236,
+            26993
+          ],
+          "post": [
+            69933,
+            12228,
+            27015
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.938,
+            0.579
+          ]
+        },
+        {
+          "pre": [
+            70636,
+            14035,
+            27000
+          ],
+          "post": [
+            70644,
+            14016,
+            26994
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.949,
+            0.989
+          ]
+        },
+        {
+          "pre": [
+            69871,
+            12301,
+            27013
+          ],
+          "post": [
+            69855,
+            12317,
+            26989
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.976,
+            0.851
+          ]
+        },
+        {
+          "pre": [
+            70606,
+            14064,
+            27054
+          ],
+          "post": [
+            70630,
+            14070,
+            27074
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.962,
+            0.578
+          ]
+        },
+        {
+          "pre": [
+            67733,
+            11912,
+            27175
+          ],
+          "post": [
+            67747,
+            11899,
+            27191
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.957,
+            0.988
+          ]
+        },
+        {
+          "pre": [
+            68126,
+            12840,
+            27297
+          ],
+          "post": [
+            68114,
+            12840,
+            27315
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.951,
+            0.976
+          ]
+        },
+        {
+          "pre": [
+            68109,
+            12751,
+            27308
+          ],
+          "post": [
+            68113,
+            12738,
+            27334
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.937,
+            0.656
+          ]
+        },
+        {
+          "pre": [
+            68270,
+            12693,
+            27338
+          ],
+          "post": [
+            68277,
+            12705,
+            27357
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.975,
+            0.981
+          ]
+        },
+        {
+          "pre": [
+            67597,
+            13619,
+            27524
+          ],
+          "post": [
+            67593,
+            13579,
+            27519
+          ],
+          "primary_post_roi": "LH(L)",
+          "confidence": [
+            0.97,
+            0.701
+          ]
+        }
+      ]
+    },
+    {
+      "pre": 13435,
+      "post": 515769,
+      "pre_type": "LHAD1f2",
+      "post_type": "SLP101",
+      "stage": "higher-order \u2192 higher-order",
+      "synapses": 33,
+      "primary_post_roi": "SLP(L)",
+      "roi_status": "SLP(L) (33/33 partner rows)",
+      "primary_post_roi_counts": {
+        "SLP(L)": 33
+      },
+      "partner_synapse_count": 33,
+      "aggregate_weight_matches_partner_count": true,
+      "unique_presynaptic_sites": 33,
+      "tbar_sites_matched": 33,
+      "tbar_dominant_prediction": "glutamate",
+      "tbar_mean_probabilities": {
+        "acetylcholine": 0.00438,
+        "gaba": 0.00878,
+        "glutamate": 0.96616,
+        "octopamine": 0.00029,
+        "serotonin": 0.00859,
+        "dopamine": 0.0118,
+        "histamine": 0.0
+      },
+      "synapse_coordinate_sample": [
+        {
+          "pre": [
+            63127,
+            9508,
+            21425
+          ],
+          "post": [
+            63118,
+            9521,
+            21427
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.921,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            63147,
+            9514,
+            21444
+          ],
+          "post": [
+            63116,
+            9519,
+            21425
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.92,
+            0.835
+          ]
+        },
+        {
+          "pre": [
+            64245,
+            11545,
+            21634
+          ],
+          "post": [
+            64217,
+            11524,
+            21626
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.886,
+            0.996
+          ]
+        },
+        {
+          "pre": [
+            64219,
+            11550,
+            21641
+          ],
+          "post": [
+            64199,
+            11541,
+            21636
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.727,
+            0.911
+          ]
+        },
+        {
+          "pre": [
+            64234,
+            11532,
+            21655
+          ],
+          "post": [
+            64211,
+            11520,
+            21632
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.959,
+            0.959
+          ]
+        },
+        {
+          "pre": [
+            64186,
+            11554,
+            21706
+          ],
+          "post": [
+            64182,
+            11574,
+            21693
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.941,
+            0.858
+          ]
+        },
+        {
+          "pre": [
+            62988,
+            11588,
+            22711
+          ],
+          "post": [
+            62979,
+            11613,
+            22735
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.961,
+            0.644
+          ]
+        },
+        {
+          "pre": [
+            62634,
+            11436,
+            22742
+          ],
+          "post": [
+            62625,
+            11454,
+            22750
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.969,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            62623,
+            11421,
+            22762
+          ],
+          "post": [
+            62627,
+            11451,
+            22747
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.926,
+            0.845
+          ]
+        },
+        {
+          "pre": [
+            62896,
+            11588,
+            22768
+          ],
+          "post": [
+            62891,
+            11603,
+            22748
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.974,
+            0.987
+          ]
+        },
+        {
+          "pre": [
+            63895,
+            11917,
+            22876
+          ],
+          "post": [
+            63915,
+            11948,
+            22904
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.943,
+            0.555
+          ]
+        },
+        {
+          "pre": [
+            63914,
+            11936,
+            22879
+          ],
+          "post": [
+            63913,
+            11946,
+            22902
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.815,
+            0.998
+          ]
+        },
+        {
+          "pre": [
+            61248,
+            7227,
+            23050
+          ],
+          "post": [
+            61231,
+            7227,
+            23038
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.946,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            62808,
+            13032,
+            23202
+          ],
+          "post": [
+            62808,
+            13011,
+            23184
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.962,
+            0.999
+          ]
+        },
+        {
+          "pre": [
+            62893,
+            13034,
+            23237
+          ],
+          "post": [
+            62909,
+            13017,
+            23236
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.96,
+            0.65
+          ]
+        },
+        {
+          "pre": [
+            60854,
+            10725,
+            23494
+          ],
+          "post": [
+            60851,
+            10698,
+            23485
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.935,
+            0.949
+          ]
+        },
+        {
+          "pre": [
+            60835,
+            10702,
+            23500
+          ],
+          "post": [
+            60845,
+            10695,
+            23485
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.79,
+            0.996
+          ]
+        },
+        {
+          "pre": [
+            60823,
+            10696,
+            23527
+          ],
+          "post": [
+            60820,
+            10681,
+            23518
+          ],
+          "primary_post_roi": "SLP(L)",
+          "confidence": [
+            0.807,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "pre": 515769,
+      "post": 15316,
+      "pre_type": "SLP101",
+      "post_type": "SMP188",
+      "stage": "higher-order \u2192 higher-order",
+      "synapses": 11,
+      "primary_post_roi": "SIP(L)",
+      "roi_status": "SIP(L) (11/11 partner rows)",
+      "primary_post_roi_counts": {
+        "SIP(L)": 11
+      },
+      "partner_synapse_count": 11,
+      "aggregate_weight_matches_partner_count": true,
+      "unique_presynaptic_sites": 11,
+      "tbar_sites_matched": 11,
+      "tbar_dominant_prediction": "glutamate",
+      "tbar_mean_probabilities": {
+        "acetylcholine": 0.00162,
+        "gaba": 0.00506,
+        "glutamate": 0.97574,
+        "octopamine": 0.00668,
+        "serotonin": 0.00385,
+        "dopamine": 0.00705,
+        "histamine": 0.0
+      },
+      "synapse_coordinate_sample": [
+        {
+          "pre": [
+            55564,
+            8899,
+            24167
+          ],
+          "post": [
+            55574,
+            8885,
+            24184
+          ],
+          "primary_post_roi": "SIP(L)",
+          "confidence": [
+            0.937,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            55602,
+            8917,
+            24190
+          ],
+          "post": [
+            55617,
+            8903,
+            24200
+          ],
+          "primary_post_roi": "SIP(L)",
+          "confidence": [
+            0.924,
+            0.999
+          ]
+        },
+        {
+          "pre": [
+            55573,
+            8904,
+            24192
+          ],
+          "post": [
+            55579,
+            8887,
+            24186
+          ],
+          "primary_post_roi": "SIP(L)",
+          "confidence": [
+            0.929,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            55619,
+            8956,
+            24215
+          ],
+          "post": [
+            55611,
+            8937,
+            24235
+          ],
+          "primary_post_roi": "SIP(L)",
+          "confidence": [
+            0.947,
+            0.931
+          ]
+        },
+        {
+          "pre": [
+            55595,
+            8936,
+            24224
+          ],
+          "post": [
+            55611,
+            8936,
+            24235
+          ],
+          "primary_post_roi": "SIP(L)",
+          "confidence": [
+            0.883,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            55470,
+            11218,
+            25523
+          ],
+          "post": [
+            55488,
+            11199,
+            25544
+          ],
+          "primary_post_roi": "SIP(L)",
+          "confidence": [
+            0.958,
+            0.73
+          ]
+        },
+        {
+          "pre": [
+            55508,
+            11175,
+            25531
+          ],
+          "post": [
+            55486,
+            11197,
+            25542
+          ],
+          "primary_post_roi": "SIP(L)",
+          "confidence": [
+            0.727,
+            0.751
+          ]
+        },
+        {
+          "pre": [
+            55468,
+            11201,
+            25544
+          ],
+          "post": [
+            55489,
+            11198,
+            25547
+          ],
+          "primary_post_roi": "SIP(L)",
+          "confidence": [
+            0.86,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            55488,
+            11178,
+            25549
+          ],
+          "post": [
+            55490,
+            11197,
+            25546
+          ],
+          "primary_post_roi": "SIP(L)",
+          "confidence": [
+            0.91,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            55503,
+            11170,
+            25570
+          ],
+          "post": [
+            55495,
+            11200,
+            25572
+          ],
+          "primary_post_roi": "SIP(L)",
+          "confidence": [
+            0.734,
+            0.698
+          ]
+        },
+        {
+          "pre": [
+            55784,
+            10755,
+            25617
+          ],
+          "post": [
+            55774,
+            10754,
+            25603
+          ],
+          "primary_post_roi": "SIP(L)",
+          "confidence": [
+            0.874,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "pre": 15316,
+      "post": 12506,
+      "pre_type": "SMP188",
+      "post_type": "ExR6",
+      "stage": "higher-order \u2192 higher-order",
+      "synapses": 43,
+      "primary_post_roi": "CRE(L)",
+      "roi_status": "CRE(L) (17/43 partner rows)",
+      "primary_post_roi_counts": {
+        "CRE(L)": 17,
+        "CentralBrain-unspecified": 12,
+        "LAL(L)": 10,
+        "SMP(L)": 4
+      },
+      "partner_synapse_count": 43,
+      "aggregate_weight_matches_partner_count": true,
+      "unique_presynaptic_sites": 43,
+      "tbar_sites_matched": 43,
+      "tbar_dominant_prediction": "acetylcholine",
+      "tbar_mean_probabilities": {
+        "acetylcholine": 0.88007,
+        "gaba": 0.01659,
+        "glutamate": 0.07346,
+        "octopamine": 0.0062,
+        "serotonin": 0.00948,
+        "dopamine": 0.01417,
+        "histamine": 2e-05
+      },
+      "synapse_coordinate_sample": [
+        {
+          "pre": [
+            56750,
+            20140,
+            16765
+          ],
+          "post": [
+            56752,
+            20147,
+            16749
+          ],
+          "primary_post_roi": "CRE(L)",
+          "confidence": [
+            0.935,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            56831,
+            20250,
+            16767
+          ],
+          "post": [
+            56845,
+            20262,
+            16762
+          ],
+          "primary_post_roi": "CRE(L)",
+          "confidence": [
+            0.963,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            56680,
+            20145,
+            16790
+          ],
+          "post": [
+            56673,
+            20131,
+            16778
+          ],
+          "primary_post_roi": "CRE(L)",
+          "confidence": [
+            0.942,
+            0.998
+          ]
+        },
+        {
+          "pre": [
+            56806,
+            20349,
+            16793
+          ],
+          "post": [
+            56812,
+            20366,
+            16782
+          ],
+          "primary_post_roi": "CRE(L)",
+          "confidence": [
+            0.943,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            57686,
+            21105,
+            16823
+          ],
+          "post": [
+            57678,
+            21112,
+            16804
+          ],
+          "primary_post_roi": "LAL(L)",
+          "confidence": [
+            0.967,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            57787,
+            21197,
+            16868
+          ],
+          "post": [
+            57787,
+            21210,
+            16883
+          ],
+          "primary_post_roi": "LAL(L)",
+          "confidence": [
+            0.965,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            55798,
+            20150,
+            17597
+          ],
+          "post": [
+            55818,
+            20130,
+            17589
+          ],
+          "primary_post_roi": "CRE(L)",
+          "confidence": [
+            0.769,
+            0.983
+          ]
+        },
+        {
+          "pre": [
+            55796,
+            20115,
+            17606
+          ],
+          "post": [
+            55811,
+            20110,
+            17597
+          ],
+          "primary_post_roi": "CRE(L)",
+          "confidence": [
+            0.955,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            55769,
+            20115,
+            17611
+          ],
+          "post": [
+            55807,
+            20114,
+            17591
+          ],
+          "primary_post_roi": "CRE(L)",
+          "confidence": [
+            0.849,
+            0.567
+          ]
+        },
+        {
+          "pre": [
+            57438,
+            20961,
+            17658
+          ],
+          "post": [
+            57426,
+            20966,
+            17676
+          ],
+          "primary_post_roi": "LAL(L)",
+          "confidence": [
+            0.94,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            57342,
+            20876,
+            17663
+          ],
+          "post": [
+            57333,
+            20885,
+            17703
+          ],
+          "primary_post_roi": "LAL(L)",
+          "confidence": [
+            0.943,
+            0.63
+          ]
+        },
+        {
+          "pre": [
+            57394,
+            20899,
+            17676
+          ],
+          "post": [
+            57394,
+            20931,
+            17695
+          ],
+          "primary_post_roi": "LAL(L)",
+          "confidence": [
+            0.972,
+            0.741
+          ]
+        },
+        {
+          "pre": [
+            55419,
+            19451,
+            17691
+          ],
+          "post": [
+            55407,
+            19459,
+            17679
+          ],
+          "primary_post_roi": "CRE(L)",
+          "confidence": [
+            0.954,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            57343,
+            20921,
+            17698
+          ],
+          "post": [
+            57337,
+            20909,
+            17709
+          ],
+          "primary_post_roi": "LAL(L)",
+          "confidence": [
+            0.933,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            55796,
+            20084,
+            17701
+          ],
+          "post": [
+            55813,
+            20082,
+            17708
+          ],
+          "primary_post_roi": "CRE(L)",
+          "confidence": [
+            0.901,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            55752,
+            20145,
+            17701
+          ],
+          "post": [
+            55768,
+            20142,
+            17731
+          ],
+          "primary_post_roi": "CRE(L)",
+          "confidence": [
+            0.902,
+            0.7
+          ]
+        },
+        {
+          "pre": [
+            55770,
+            20134,
+            17718
+          ],
+          "post": [
+            55770,
+            20136,
+            17731
+          ],
+          "primary_post_roi": "CRE(L)",
+          "confidence": [
+            0.745,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            55785,
+            20084,
+            17726
+          ],
+          "post": [
+            55813,
+            20084,
+            17716
+          ],
+          "primary_post_roi": "CRE(L)",
+          "confidence": [
+            0.965,
+            0.926
+          ]
+        }
+      ]
+    },
+    {
+      "pre": 12506,
+      "post": 513283,
+      "pre_type": "ExR6",
+      "post_type": "PEN_a(PEN1)",
+      "stage": "higher-order \u2192 central complex",
+      "synapses": 177,
+      "primary_post_roi": "EB",
+      "roi_status": "EB (175/177 partner rows)",
+      "primary_post_roi_counts": {
+        "EB": 175,
+        "CentralBrain-unspecified": 2
+      },
+      "partner_synapse_count": 177,
+      "aggregate_weight_matches_partner_count": true,
+      "unique_presynaptic_sites": 177,
+      "tbar_sites_matched": 177,
+      "tbar_dominant_prediction": "glutamate",
+      "tbar_mean_probabilities": {
+        "acetylcholine": 0.28781,
+        "gaba": 0.04082,
+        "glutamate": 0.6527,
+        "octopamine": 0.00159,
+        "serotonin": 0.00824,
+        "dopamine": 0.00641,
+        "histamine": 0.00243
+      },
+      "synapse_coordinate_sample": [
+        {
+          "pre": [
+            50535,
+            21315,
+            20326
+          ],
+          "post": [
+            50528,
+            21330,
+            20325
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.817,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50601,
+            21301,
+            20336
+          ],
+          "post": [
+            50585,
+            21307,
+            20325
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.704,
+            0.995
+          ]
+        },
+        {
+          "pre": [
+            50602,
+            21461,
+            20411
+          ],
+          "post": [
+            50620,
+            21471,
+            20396
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.904,
+            0.977
+          ]
+        },
+        {
+          "pre": [
+            50586,
+            21544,
+            20420
+          ],
+          "post": [
+            50600,
+            21563,
+            20428
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.941,
+            0.99
+          ]
+        },
+        {
+          "pre": [
+            50094,
+            21856,
+            20482
+          ],
+          "post": [
+            50077,
+            21850,
+            20475
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.959,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50146,
+            21867,
+            20545
+          ],
+          "post": [
+            50152,
+            21861,
+            20563
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.95,
+            0.999
+          ]
+        },
+        {
+          "pre": [
+            50465,
+            21063,
+            20561
+          ],
+          "post": [
+            50453,
+            21054,
+            20549
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.918,
+            0.998
+          ]
+        },
+        {
+          "pre": [
+            50393,
+            21503,
+            20570
+          ],
+          "post": [
+            50376,
+            21495,
+            20581
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.936,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            51050,
+            21451,
+            20580
+          ],
+          "post": [
+            51034,
+            21444,
+            20574
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.929,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50482,
+            21057,
+            20614
+          ],
+          "post": [
+            50504,
+            21067,
+            20607
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.927,
+            0.993
+          ]
+        },
+        {
+          "pre": [
+            50106,
+            21227,
+            20643
+          ],
+          "post": [
+            50101,
+            21211,
+            20637
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.848,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50573,
+            21254,
+            20690
+          ],
+          "post": [
+            50584,
+            21265,
+            20700
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.948,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50654,
+            20835,
+            20736
+          ],
+          "post": [
+            50648,
+            20819,
+            20739
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.945,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50085,
+            21177,
+            20744
+          ],
+          "post": [
+            50097,
+            21171,
+            20726
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.945,
+            0.998
+          ]
+        },
+        {
+          "pre": [
+            50881,
+            21457,
+            20767
+          ],
+          "post": [
+            50900,
+            21456,
+            20759
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.941,
+            0.998
+          ]
+        },
+        {
+          "pre": [
+            50562,
+            20892,
+            20768
+          ],
+          "post": [
+            50562,
+            20906,
+            20780
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.95,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50845,
+            20890,
+            20798
+          ],
+          "post": [
+            50840,
+            20877,
+            20809
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.972,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            49991,
+            22009,
+            20823
+          ],
+          "post": [
+            49995,
+            21984,
+            20829
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.907,
+            0.978
+          ]
+        }
+      ]
+    },
+    {
+      "pre": 513283,
+      "post": 513284,
+      "pre_type": "PEN_a(PEN1)",
+      "post_type": "EPG",
+      "stage": "central complex \u2192 central complex",
+      "synapses": 120,
+      "primary_post_roi": "EB",
+      "roi_status": "EB (119/120 partner rows)",
+      "primary_post_roi_counts": {
+        "EB": 119,
+        "CentralBrain-unspecified": 1
+      },
+      "partner_synapse_count": 120,
+      "aggregate_weight_matches_partner_count": true,
+      "unique_presynaptic_sites": 120,
+      "tbar_sites_matched": 120,
+      "tbar_dominant_prediction": "acetylcholine",
+      "tbar_mean_probabilities": {
+        "acetylcholine": 0.84061,
+        "gaba": 0.02274,
+        "glutamate": 0.08383,
+        "octopamine": 0.00192,
+        "serotonin": 0.04027,
+        "dopamine": 0.01058,
+        "histamine": 4e-05
+      },
+      "synapse_coordinate_sample": [
+        {
+          "pre": [
+            50119,
+            21079,
+            20809
+          ],
+          "post": [
+            50133,
+            21084,
+            20819
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.924,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50385,
+            20495,
+            20852
+          ],
+          "post": [
+            50390,
+            20492,
+            20840
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.895,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50507,
+            20335,
+            20894
+          ],
+          "post": [
+            50495,
+            20322,
+            20891
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.935,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50217,
+            21165,
+            20907
+          ],
+          "post": [
+            50212,
+            21125,
+            20919
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.711,
+            0.662
+          ]
+        },
+        {
+          "pre": [
+            50206,
+            21141,
+            20914
+          ],
+          "post": [
+            50209,
+            21124,
+            20922
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.971,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50510,
+            20537,
+            20930
+          ],
+          "post": [
+            50527,
+            20537,
+            20930
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.913,
+            0.996
+          ]
+        },
+        {
+          "pre": [
+            50424,
+            20517,
+            20952
+          ],
+          "post": [
+            50413,
+            20495,
+            20965
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.815,
+            0.999
+          ]
+        },
+        {
+          "pre": [
+            50811,
+            19617,
+            21014
+          ],
+          "post": [
+            50818,
+            19602,
+            21021
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.949,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50057,
+            20655,
+            21028
+          ],
+          "post": [
+            50047,
+            20651,
+            21014
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.924,
+            0.999
+          ]
+        },
+        {
+          "pre": [
+            49907,
+            20862,
+            21050
+          ],
+          "post": [
+            49896,
+            20866,
+            21064
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.768,
+            0.997
+          ]
+        },
+        {
+          "pre": [
+            49934,
+            20863,
+            21054
+          ],
+          "post": [
+            49898,
+            20868,
+            21066
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.965,
+            0.683
+          ]
+        },
+        {
+          "pre": [
+            50838,
+            19634,
+            21055
+          ],
+          "post": [
+            50856,
+            19612,
+            21078
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.846,
+            0.674
+          ]
+        },
+        {
+          "pre": [
+            50375,
+            20289,
+            21057
+          ],
+          "post": [
+            50375,
+            20278,
+            21068
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.872,
+            0.839
+          ]
+        },
+        {
+          "pre": [
+            51245,
+            20144,
+            21067
+          ],
+          "post": [
+            51235,
+            20154,
+            21051
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.919,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50376,
+            20126,
+            21072
+          ],
+          "post": [
+            50393,
+            20117,
+            21054
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.925,
+            0.938
+          ]
+        },
+        {
+          "pre": [
+            50119,
+            20711,
+            21074
+          ],
+          "post": [
+            50150,
+            20712,
+            21100
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.784,
+            0.726
+          ]
+        },
+        {
+          "pre": [
+            50139,
+            20700,
+            21089
+          ],
+          "post": [
+            50151,
+            20711,
+            21099
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.959,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            50269,
+            19878,
+            21092
+          ],
+          "post": [
+            50274,
+            19866,
+            21082
+          ],
+          "primary_post_roi": "EB",
+          "confidence": [
+            0.882,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "pre": 513284,
+      "post": 518375,
+      "pre_type": "EPG",
+      "post_type": "PFL2",
+      "stage": "central complex \u2192 central complex",
+      "synapses": 30,
+      "primary_post_roi": "PB",
+      "roi_status": "PB (30/30 partner rows)",
+      "primary_post_roi_counts": {
+        "PB": 30
+      },
+      "partner_synapse_count": 30,
+      "aggregate_weight_matches_partner_count": true,
+      "unique_presynaptic_sites": 30,
+      "tbar_sites_matched": 30,
+      "tbar_dominant_prediction": "acetylcholine",
+      "tbar_mean_probabilities": {
+        "acetylcholine": 0.95207,
+        "gaba": 0.00468,
+        "glutamate": 0.04085,
+        "octopamine": 0.00077,
+        "serotonin": 0.00055,
+        "dopamine": 0.00107,
+        "histamine": 1e-05
+      },
+      "synapse_coordinate_sample": [
+        {
+          "pre": [
+            47015,
+            16538,
+            30412
+          ],
+          "post": [
+            47003,
+            16537,
+            30398
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.732,
+            0.765
+          ]
+        },
+        {
+          "pre": [
+            47016,
+            16588,
+            30440
+          ],
+          "post": [
+            47013,
+            16606,
+            30438
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.923,
+            0.99
+          ]
+        },
+        {
+          "pre": [
+            47067,
+            16313,
+            30455
+          ],
+          "post": [
+            47086,
+            16301,
+            30434
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.954,
+            0.869
+          ]
+        },
+        {
+          "pre": [
+            46655,
+            16733,
+            30512
+          ],
+          "post": [
+            46675,
+            16756,
+            30532
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.939,
+            0.538
+          ]
+        },
+        {
+          "pre": [
+            46645,
+            16797,
+            30615
+          ],
+          "post": [
+            46662,
+            16802,
+            30621
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.955,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            46808,
+            16265,
+            30628
+          ],
+          "post": [
+            46804,
+            16284,
+            30636
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.976,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            46518,
+            16791,
+            30699
+          ],
+          "post": [
+            46517,
+            16778,
+            30691
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.709,
+            0.899
+          ]
+        },
+        {
+          "pre": [
+            46545,
+            16670,
+            30705
+          ],
+          "post": [
+            46545,
+            16659,
+            30720
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.945,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            46795,
+            16520,
+            30711
+          ],
+          "post": [
+            46789,
+            16539,
+            30703
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.904,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            47160,
+            16060,
+            30717
+          ],
+          "post": [
+            47191,
+            16028,
+            30737
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.853,
+            0.818
+          ]
+        },
+        {
+          "pre": [
+            46688,
+            16632,
+            30749
+          ],
+          "post": [
+            46708,
+            16626,
+            30746
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.948,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            46994,
+            16182,
+            30816
+          ],
+          "post": [
+            46990,
+            16166,
+            30812
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.833,
+            0.974
+          ]
+        },
+        {
+          "pre": [
+            47503,
+            15780,
+            30836
+          ],
+          "post": [
+            47527,
+            15769,
+            30851
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.926,
+            0.843
+          ]
+        },
+        {
+          "pre": [
+            46739,
+            16629,
+            30840
+          ],
+          "post": [
+            46754,
+            16612,
+            30841
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.976,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            46601,
+            16010,
+            30912
+          ],
+          "post": [
+            46622,
+            15982,
+            30914
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.914,
+            0.614
+          ]
+        },
+        {
+          "pre": [
+            47085,
+            16057,
+            30933
+          ],
+          "post": [
+            47082,
+            16066,
+            30963
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.945,
+            0.641
+          ]
+        },
+        {
+          "pre": [
+            46572,
+            16092,
+            30933
+          ],
+          "post": [
+            46543,
+            16115,
+            30922
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.922,
+            0.813
+          ]
+        },
+        {
+          "pre": [
+            47135,
+            16199,
+            31000
+          ],
+          "post": [
+            47123,
+            16163,
+            30993
+          ],
+          "primary_post_roi": "PB",
+          "confidence": [
+            0.968,
+            0.646
+          ]
+        }
+      ]
+    },
+    {
+      "pre": 518375,
+      "post": 10975,
+      "pre_type": "PFL2",
+      "post_type": "DNa03",
+      "stage": "central complex \u2192 descending neuron",
+      "synapses": 64,
+      "primary_post_roi": "LAL(R)",
+      "roi_status": "LAL(R) (64/64 partner rows)",
+      "primary_post_roi_counts": {
+        "LAL(R)": 64
+      },
+      "partner_synapse_count": 64,
+      "aggregate_weight_matches_partner_count": true,
+      "unique_presynaptic_sites": 64,
+      "tbar_sites_matched": 64,
+      "tbar_dominant_prediction": "acetylcholine",
+      "tbar_mean_probabilities": {
+        "acetylcholine": 0.85875,
+        "gaba": 0.02578,
+        "glutamate": 0.07001,
+        "octopamine": 0.00629,
+        "serotonin": 0.01688,
+        "dopamine": 0.0222,
+        "histamine": 9e-05
+      },
+      "synapse_coordinate_sample": [
+        {
+          "pre": [
+            41271,
+            23437,
+            17681
+          ],
+          "post": [
+            41265,
+            23459,
+            17675
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.944,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            41176,
+            23458,
+            17758
+          ],
+          "post": [
+            41178,
+            23479,
+            17777
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.974,
+            0.989
+          ]
+        },
+        {
+          "pre": [
+            41272,
+            23485,
+            17761
+          ],
+          "post": [
+            41276,
+            23500,
+            17740
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.972,
+            0.996
+          ]
+        },
+        {
+          "pre": [
+            41289,
+            23464,
+            17762
+          ],
+          "post": [
+            41296,
+            23441,
+            17787
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.868,
+            0.708
+          ]
+        },
+        {
+          "pre": [
+            41306,
+            23377,
+            17796
+          ],
+          "post": [
+            41298,
+            23360,
+            17804
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.976,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            41007,
+            23967,
+            18165
+          ],
+          "post": [
+            40990,
+            23973,
+            18171
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.966,
+            0.999
+          ]
+        },
+        {
+          "pre": [
+            41132,
+            23893,
+            18174
+          ],
+          "post": [
+            41149,
+            23906,
+            18170
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.966,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            41136,
+            23897,
+            18207
+          ],
+          "post": [
+            41156,
+            23900,
+            18192
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.955,
+            0.994
+          ]
+        },
+        {
+          "pre": [
+            40583,
+            23522,
+            18245
+          ],
+          "post": [
+            40569,
+            23483,
+            18226
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.939,
+            0.919
+          ]
+        },
+        {
+          "pre": [
+            40557,
+            23514,
+            18246
+          ],
+          "post": [
+            40526,
+            23507,
+            18249
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.95,
+            0.997
+          ]
+        },
+        {
+          "pre": [
+            40506,
+            23528,
+            18263
+          ],
+          "post": [
+            40517,
+            23509,
+            18259
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.957,
+            0.621
+          ]
+        },
+        {
+          "pre": [
+            41046,
+            23968,
+            18266
+          ],
+          "post": [
+            41025,
+            23979,
+            18248
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.988,
+            0.93
+          ]
+        },
+        {
+          "pre": [
+            40712,
+            23602,
+            18328
+          ],
+          "post": [
+            40725,
+            23616,
+            18337
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.961,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            40824,
+            23954,
+            18586
+          ],
+          "post": [
+            40851,
+            23955,
+            18604
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.857,
+            0.942
+          ]
+        },
+        {
+          "pre": [
+            40830,
+            23977,
+            18599
+          ],
+          "post": [
+            40851,
+            23956,
+            18603
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.977,
+            0.967
+          ]
+        },
+        {
+          "pre": [
+            41090,
+            22250,
+            18720
+          ],
+          "post": [
+            41082,
+            22264,
+            18708
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.936,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            41226,
+            22230,
+            18807
+          ],
+          "post": [
+            41234,
+            22255,
+            18823
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.838,
+            0.876
+          ]
+        },
+        {
+          "pre": [
+            41158,
+            22280,
+            18824
+          ],
+          "post": [
+            41192,
+            22281,
+            18812
+          ],
+          "primary_post_roi": "LAL(R)",
+          "confidence": [
+            0.893,
+            0.997
+          ]
+        }
+      ]
+    },
+    {
+      "pre": 10975,
+      "post": 800637,
+      "pre_type": "DNa03",
+      "post_type": "i1 MN",
+      "stage": "descending neuron \u2192 VNC motor neuron",
+      "synapses": 6,
+      "primary_post_roi": "IntTct",
+      "roi_status": "IntTct (6/6 partner rows)",
+      "primary_post_roi_counts": {
+        "IntTct": 6
+      },
+      "partner_synapse_count": 6,
+      "aggregate_weight_matches_partner_count": true,
+      "unique_presynaptic_sites": 6,
+      "tbar_sites_matched": 6,
+      "tbar_dominant_prediction": "acetylcholine",
+      "tbar_mean_probabilities": {
+        "acetylcholine": 0.858,
+        "gaba": 0.00886,
+        "glutamate": 0.00487,
+        "octopamine": 0.00369,
+        "serotonin": 0.12364,
+        "dopamine": 5e-05,
+        "histamine": 0.00088
+      },
+      "synapse_coordinate_sample": [
+        {
+          "pre": [
+            47692,
+            50340,
+            89007
+          ],
+          "post": [
+            47675,
+            50360,
+            89037
+          ],
+          "primary_post_roi": "IntTct",
+          "confidence": [
+            0.816,
+            0.578
+          ]
+        },
+        {
+          "pre": [
+            47670,
+            50336,
+            89090
+          ],
+          "post": [
+            47662,
+            50318,
+            89102
+          ],
+          "primary_post_roi": "IntTct",
+          "confidence": [
+            0.963,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            48269,
+            49800,
+            92289
+          ],
+          "post": [
+            48254,
+            49790,
+            92287
+          ],
+          "primary_post_roi": "IntTct",
+          "confidence": [
+            0.959,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            48243,
+            49758,
+            92315
+          ],
+          "post": [
+            48245,
+            49787,
+            92301
+          ],
+          "primary_post_roi": "IntTct",
+          "confidence": [
+            0.873,
+            0.854
+          ]
+        },
+        {
+          "pre": [
+            48349,
+            49779,
+            92367
+          ],
+          "post": [
+            48362,
+            49769,
+            92357
+          ],
+          "primary_post_roi": "IntTct",
+          "confidence": [
+            0.873,
+            1.0
+          ]
+        },
+        {
+          "pre": [
+            48199,
+            49777,
+            92407
+          ],
+          "post": [
+            48183,
+            49794,
+            92416
+          ],
+          "primary_post_roi": "IntTct",
+          "confidence": [
+            0.919,
+            0.999
+          ]
+        }
+      ]
+    }
+  ],
+  "roi_status": "Synapse-level MaleCNS partner, point-location, and presynaptic transmitter tables are local. Each displayed ROI and coordinate comes from those official tables; live rates remain a CHRONOS model.",
+  "dynamics_note": "Rates are a bounded CHRONOS model over these real nodes and weights; transmitter/receptor signs are not inferred from this table.",
+  "synapse_evidence": {
+    "status": "official MaleCNS synapse tables locally verified",
+    "files": {
+      "syn-partners-male-cns-v1.0-minconf-0.5.feather": {
+        "bytes": 6777179098,
+        "rows_scanned": 311833243
+      },
+      "syn-points-male-cns-v1.0-minconf-0.5.feather": {
+        "bytes": 13061489098,
+        "rows_scanned": 357489383
+      },
+      "tbar-neurotransmitters-male-cns-v1.0.feather": {
+        "bytes": 2651680218,
+        "rows_scanned": 45656140
+      }
+    },
+    "selected_partner_rows": 787,
+    "coordinate_samples_are_truncated_to": 18
+  }
+}

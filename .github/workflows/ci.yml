@@ -1,0 +1,25 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  portable-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Compile Python
+        run: python -m py_compile server.py
+      - name: Check browser JavaScript
+        run: node --check dist/world.js
+      - name: Run behavior regressions
+        run: python -m unittest discover -s scripts -p "test_*.py" -q
+      - name: Validate verified MaleCNS pathway
+        run: python scripts/validate_verified_pathway.py

@@ -1,0 +1,578 @@
+{
+  "odor": {
+    "dataset": "HHMI Janelia MaleCNS v1.0",
+    "circuit": "odor",
+    "member_count": 161,
+    "edge_count": 20,
+    "edges": [
+      {
+        "pre": 192631,
+        "post": 10208,
+        "pre_type": "ORN_DM1",
+        "post_type": "DM1_lPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 202
+      },
+      {
+        "pre": 189605,
+        "post": 10176,
+        "pre_type": "ORN_DM1",
+        "post_type": "DM1_lPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 175
+      },
+      {
+        "pre": 176260,
+        "post": 10208,
+        "pre_type": "ORN_DM1",
+        "post_type": "DM1_lPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 143
+      },
+      {
+        "pre": 226920,
+        "post": 10176,
+        "pre_type": "ORN_DM1",
+        "post_type": "DM1_lPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 143
+      },
+      {
+        "pre": 153046,
+        "post": 10176,
+        "pre_type": "ORN_DM1",
+        "post_type": "DM1_lPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 143
+      },
+      {
+        "pre": 222974,
+        "post": 10208,
+        "pre_type": "ORN_DM1",
+        "post_type": "DM1_lPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 142
+      },
+      {
+        "pre": 123123,
+        "post": 10176,
+        "pre_type": "ORN_DM1",
+        "post_type": "DM1_lPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 140
+      },
+      {
+        "pre": 180317,
+        "post": 10208,
+        "pre_type": "ORN_DM1",
+        "post_type": "DM1_lPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 134
+      },
+      {
+        "pre": 900877,
+        "post": 10208,
+        "pre_type": "ORN_DM1",
+        "post_type": "DM1_lPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 133
+      },
+      {
+        "pre": 536451,
+        "post": 10176,
+        "pre_type": "ORN_DM1",
+        "post_type": "DM1_lPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 132
+      },
+      {
+        "pre": 276359,
+        "post": 10390,
+        "pre_type": "ORN_VA2",
+        "post_type": "VA2_adPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 187
+      },
+      {
+        "pre": 192555,
+        "post": 10390,
+        "pre_type": "ORN_VA2",
+        "post_type": "VA2_adPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 167
+      },
+      {
+        "pre": 158649,
+        "post": 10390,
+        "pre_type": "ORN_VA2",
+        "post_type": "VA2_adPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 154
+      },
+      {
+        "pre": 179786,
+        "post": 10390,
+        "pre_type": "ORN_VA2",
+        "post_type": "VA2_adPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 149
+      },
+      {
+        "pre": 212914,
+        "post": 10390,
+        "pre_type": "ORN_VA2",
+        "post_type": "VA2_adPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 135
+      },
+      {
+        "pre": 190954,
+        "post": 10390,
+        "pre_type": "ORN_VA2",
+        "post_type": "VA2_adPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 134
+      },
+      {
+        "pre": 184729,
+        "post": 10390,
+        "pre_type": "ORN_VA2",
+        "post_type": "VA2_adPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 134
+      },
+      {
+        "pre": 170322,
+        "post": 10390,
+        "pre_type": "ORN_VA2",
+        "post_type": "VA2_adPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 132
+      },
+      {
+        "pre": 205907,
+        "post": 10561,
+        "pre_type": "ORN_VA2",
+        "post_type": "VA2_adPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 130
+      },
+      {
+        "pre": 186200,
+        "post": 10390,
+        "pre_type": "ORN_VA2",
+        "post_type": "VA2_adPN",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 130
+      }
+    ],
+    "note": "Cell identities and weights are from MaleCNS v1.0. The flat connection export has no per-edge neuropil or neurotransmitter field; CHRONOS rate dynamics and body control remain model assumptions."
+  },
+  "compass": {
+    "dataset": "HHMI Janelia MaleCNS v1.0",
+    "circuit": "compass",
+    "member_count": 160,
+    "edge_count": 42,
+    "edges": [
+      {
+        "pre": 11987,
+        "post": 26443,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 150
+      },
+      {
+        "pre": 513283,
+        "post": 512928,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 145
+      },
+      {
+        "pre": 513283,
+        "post": 15616,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 133
+      },
+      {
+        "pre": 11307,
+        "post": 523807,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 129
+      },
+      {
+        "pre": 19825,
+        "post": 523806,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 124
+      },
+      {
+        "pre": 513283,
+        "post": 513284,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 120
+      },
+      {
+        "pre": 15616,
+        "post": 525062,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 120
+      },
+      {
+        "pre": 524073,
+        "post": 39413,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 118
+      },
+      {
+        "pre": 520818,
+        "post": 523807,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 116
+      },
+      {
+        "pre": 76194,
+        "post": 523786,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 116
+      },
+      {
+        "pre": 521813,
+        "post": 39413,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 113
+      },
+      {
+        "pre": 513463,
+        "post": 522992,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 113
+      },
+      {
+        "pre": 19760,
+        "post": 15616,
+        "pre_type": "PEN_b(PEN2)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 112
+      },
+      {
+        "pre": 88342,
+        "post": 522973,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 111
+      },
+      {
+        "pre": 18504,
+        "post": 11307,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 111
+      },
+      {
+        "pre": 18419,
+        "post": 523786,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 110
+      },
+      {
+        "pre": 513283,
+        "post": 14727,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 109
+      },
+      {
+        "pre": 19125,
+        "post": 26443,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 107
+      },
+      {
+        "pre": 13217,
+        "post": 39753,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 107
+      },
+      {
+        "pre": 21932,
+        "post": 519140,
+        "pre_type": "PEN_b(PEN2)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 106
+      },
+      {
+        "pre": 18779,
+        "post": 88342,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 106
+      },
+      {
+        "pre": 18744,
+        "post": 513520,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 106
+      },
+      {
+        "pre": 18504,
+        "post": 520818,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 105
+      },
+      {
+        "pre": 11503,
+        "post": 20007,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 104
+      },
+      {
+        "pre": 513520,
+        "post": 523806,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 102
+      },
+      {
+        "pre": 512927,
+        "post": 519140,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 102
+      },
+      {
+        "pre": 18504,
+        "post": 513520,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 101
+      },
+      {
+        "pre": 513283,
+        "post": 11874,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 101
+      },
+      {
+        "pre": 18419,
+        "post": 15713,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 100
+      },
+      {
+        "pre": 512927,
+        "post": 515675,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 100
+      },
+      {
+        "pre": 521812,
+        "post": 520575,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 99
+      },
+      {
+        "pre": 92188,
+        "post": 520575,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 99
+      },
+      {
+        "pre": 18744,
+        "post": 520818,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 99
+      },
+      {
+        "pre": 514126,
+        "post": 26443,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 98
+      },
+      {
+        "pre": 22240,
+        "post": 520581,
+        "pre_type": "PEN_b(PEN2)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 98
+      },
+      {
+        "pre": 131313,
+        "post": 523806,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 97
+      },
+      {
+        "pre": 520581,
+        "post": 535347,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 97
+      },
+      {
+        "pre": 529385,
+        "post": 523786,
+        "pre_type": "PEN_b(PEN2)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 97
+      },
+      {
+        "pre": 514045,
+        "post": 10539,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 96
+      },
+      {
+        "pre": 76194,
+        "post": 556346,
+        "pre_type": "PEN_a(PEN1)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 96
+      },
+      {
+        "pre": 39813,
+        "post": 520818,
+        "pre_type": "PEN_b(PEN2)",
+        "post_type": "EPG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 95
+      },
+      {
+        "pre": 10539,
+        "post": 522992,
+        "pre_type": "EPG",
+        "post_type": "PEG",
+        "neuropil": "not included",
+        "neurotransmitter": "not included",
+        "synapses": 95
+      }
+    ],
+    "note": "Cell identities and weights are from MaleCNS v1.0. The flat connection export has no per-edge neuropil or neurotransmitter field; CHRONOS rate dynamics and body control remain model assumptions."
+  }
+}

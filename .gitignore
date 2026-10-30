@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+
+# Local tooling and previous hosting metadata are not part of this repository.
+.gstack/
+.openai/
+server.py.bak
+
+# Raw MaleCNS downloads are 20+ GB. Keep only the attributed portable subset.
+data/*
+!data/malecns/
+data/malecns/*
+!data/malecns/README.md
+!data/malecns/portable-circuits.json
+!data/malecns/verified-odor-motor-path.json
+!data/malecns/verified-path-validation.json
+!data/malecns/verified-synapse-evidence.json
+
+# Editor and operating-system noise.
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

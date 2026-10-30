@@ -3,6 +3,8 @@ const worldCanvas = $('#world'), brainCanvas = $('#brain');
 const wctx = worldCanvas.getContext('2d'), bctx = brainCanvas.getContext('2d');
 let latest = null, busy = false;
 let currentFrame = 'world', worldlineData = null, timeCursor = 1, branchData = null;
+let brainMode = 'schematic'; const brain3d = { yaw: Math.PI/5, pitch: 0.25 };
+// Cell positions are read from node.coord.norm (computed server-side from real MaleCNS synapse coordinates).
 const WORLD_SPAN = 10;
 const FLY_HORIZON = 0.9;  // CHRONOS sensory horizon, world units; shared with brain panel assumptions
 const camera = {yaw:Math.PI/4,pitch:.78,zoom:1,follow:false,focus:{x:5,y:5}};
@@ -71,11 +73,14 @@ function drawWorld(data){
   text(wctx,`FLY ALT ${f.z.toFixed(2)}  •  WIND XYZ ${wx.toFixed(2)},${wy.toFixed(2)},${wz.toFixed(2)}`,18,H-55,9,'#d4f16b');
 }
 
+let brainGroupsHit = [];
 function drawBrain(data){
+  if(brainMode === 'wiring3d') return drawBrain3D(data);
   const r=fit(brainCanvas,bctx),W=r.width,H=r.height,path=data.pathway;
   bctx.fillStyle='#111714';bctx.fillRect(0,0,W,H);
-  text(bctx,'ONE VERIFIED MALECNS ROUTE',20,58,10,'#d7e6d3');
+  text(bctx,'ONE VERIFIED MALECNS ROUTE · CLICK ANY CARD',20,58,10,'#d7e6d3');
   text(bctx,'REAL DIRECTED EDGES  •  LIVE RATE IS A CHRONOS MODEL',20,74,8,'#748978');
+  brainGroupsHit = [];
   const groups=[
     {label:'1  SMELL',meaning:'antenna detects DM1 odor',nodes:[0],color:'#ffbe58'},
     {label:'2  RELAY',meaning:'projection neuron carries odor',nodes:[1],color:'#64ddc2'},
@@ -88,6 +93,7 @@ function drawBrain(data){
   const cardX=20,cardW=W-40,cardH=54,startY=92,gap=9;
   groups.forEach((group,index)=>{
     const y=startY+index*(cardH+gap),active=Math.max(...group.nodes.map(n=>path.nodes[n].rate));
+    brainGroupsHit.push({ y, cardH, group, cssYRatio: y/H, cssHRatio: cardH/H });
     bctx.fillStyle=active>.002?'#173a33':'#17201c';bctx.strokeStyle=active>.002?group.color:'rgba(173,198,173,.22)';bctx.lineWidth=1;
     bctx.fillRect(cardX,y,cardW,cardH);bctx.strokeRect(cardX,y,cardW,cardH);
     bctx.fillStyle=group.color;bctx.fillRect(cardX,y,4,cardH);
@@ -109,6 +115,116 @@ function drawBrain(data){
   text(bctx,status,W*.5,H-68,9,finalRate>.002?'#d4f16b':'#8d9a8e','center');
   text(bctx,'CARD ORDER IS A FUNCTIONAL SCHEMATIC, NOT A PHYSICAL BRAIN SHAPE.',W*.5,H-52,7,'#69776b','center');
 }
+
+
+function drawBrain3D(data){
+  const r=fit(brainCanvas,bctx),W=r.width,H=r.height;
+  bctx.fillStyle='#0a1013'; bctx.fillRect(0,0,W,H);
+  const path=data.pathway;
+  const scale = Math.min(W,H) * 0.42;
+  const cx = W*0.5, cy = H*0.5 + 20;
+
+  function proj(p){
+    const cy_y = Math.cos(brain3d.yaw), sy = Math.sin(brain3d.yaw);
+    const x1 =  p.x*cy_y + p.z*sy;
+    const z1 = -p.x*sy   + p.z*cy_y;
+    const cp = Math.cos(brain3d.pitch), sp = Math.sin(brain3d.pitch);
+    const y1 = p.y*cp - z1*sp;
+    const z2 = p.y*sp + z1*cp;
+    const d  = z2 + 2.4;
+    return { sx: cx + (x1*scale)/d, sy: cy + (y1*scale)/d, depth: z2 };
+  }
+
+  // Honest fallback: if a cell has no real coord yet (first tick before pathway loads), it stays off-screen.
+  const points = path.nodes.map(node => {
+    const c = node.coord && node.coord.norm;
+    const pos = c ? { x:c[0], y:c[1], z:c[2] } : null;
+    const roi = (node.coord && node.coord.sample_count) || 0;
+    return { node, pos, available: !!pos, proj: pos ? proj(pos) : null, nSamples: roi };
+  }).filter(p => p.available);
+
+  if(!points.length){
+    text(bctx, 'LOADING PATHWAY COORDINATES...', W*0.5, H*0.5, 11, '#8ea99a', 'center');
+    return;
+  }
+
+  // Reference axes rooted at the pathway centroid origin (0,0,0 in normalized space).
+  const axLen = 0.9;
+  [['#78906e', {x:axLen,y:0,z:0}, 'X'],
+   ['#78906e', {x:0,y:axLen,z:0}, 'Y'],
+   ['#78906e', {x:0,y:0,z:axLen}, 'Z']].forEach(([col,end,lbl])=>{
+    const o = proj({x:0,y:0,z:0}), e = proj(end);
+    bctx.strokeStyle = col+'55'; bctx.lineWidth = 1;
+    bctx.beginPath(); bctx.moveTo(o.sx,o.sy); bctx.lineTo(e.sx,e.sy); bctx.stroke();
+    text(bctx, lbl, e.sx+4, e.sy-2, 7, col+'bb');
+  });
+
+  // Edges, sorted far-to-near.
+  const bodyToIdx = new Map(path.nodes.map((n,i)=>[n.body, i]));
+  const edgesWithDepth = path.edges.map(edge => {
+    const preIdx = bodyToIdx.get(edge.pre);
+    const postIdx = bodyToIdx.get(edge.post);
+    if(preIdx==null || postIdx==null) return null;
+    const p = points.find(pt => pt.node.body === edge.pre);
+    const q = points.find(pt => pt.node.body === edge.post);
+    if(!p || !q) return null;
+    return { edge, p, q, depth: (p.proj.depth + q.proj.depth)/2 };
+  }).filter(Boolean).sort((a,b)=> b.depth - a.depth);
+
+  edgesWithDepth.forEach(({edge, p, q, depth}) => {
+    const activityScalar = edge.synapses ? (edge.activity||0) / edge.synapses : 0;
+    const alpha = Math.max(0.2, Math.min(0.95, 0.95 - depth*0.25));
+    const col = activityScalar > 0.3 ? `rgba(212,241,107,${alpha.toFixed(2)})` : `rgba(142,169,154,${(alpha*0.55).toFixed(2)})`;
+    bctx.strokeStyle = col;
+    bctx.lineWidth = Math.max(1, Math.sqrt(edge.synapses) * 0.35);
+    bctx.beginPath(); bctx.moveTo(p.proj.sx, p.proj.sy); bctx.lineTo(q.proj.sx, q.proj.sy); bctx.stroke();
+    if(edge.synapses >= 100){
+      const mx = (p.proj.sx+q.proj.sx)/2, my = (p.proj.sy+q.proj.sy)/2;
+      text(bctx, `${edge.synapses}`, mx, my - 2, 7, '#d4f16b', 'center');
+    }
+  });
+
+  // Cells with bounded radius; stagger labels to reduce collisions.
+  const nodesSorted = points.slice().sort((a,b)=> b.proj.depth - a.proj.depth);
+  const placedLabels = [];
+  nodesSorted.forEach(({node, pos, proj: pr, nSamples}, drawIdx) => {
+    const activity = node.rate || 0;
+    const radius = Math.max(4, Math.min(14, 12 - pr.depth*3));
+    const glow = bctx.createRadialGradient(pr.sx, pr.sy, 0, pr.sx, pr.sy, radius*2.2);
+    glow.addColorStop(0, activity > 0.1 ? `rgba(212,241,107,${(0.3+activity*0.6).toFixed(2)})` : 'rgba(100,221,194,0.18)');
+    glow.addColorStop(1, 'rgba(0,0,0,0)');
+    bctx.fillStyle = glow;
+    bctx.beginPath(); bctx.arc(pr.sx, pr.sy, radius*2.2, 0, Math.PI*2); bctx.fill();
+    bctx.fillStyle = activity > 0.1 ? '#d4f16b' : '#64ddc2';
+    bctx.beginPath(); bctx.arc(pr.sx, pr.sy, radius, 0, Math.PI*2); bctx.fill();
+    bctx.strokeStyle = '#0a1013'; bctx.lineWidth = 1.5; bctx.stroke();
+    // Compact single-line label: type and ROI inline. Nudge above or below if colliding with earlier labels.
+    const sampledRoi = node.coord && path.edges.find(e=>e.post===node.body)?.primary_post_roi;
+    const label = `${node.type}  ${sampledRoi || 'ROI N/A'}`;
+    let ly = pr.sy - radius - 5;
+    let dir = -1;
+    while(placedLabels.some(L => Math.abs(L.y - ly) < 11 && Math.abs(L.x - pr.sx) < 60)){
+      ly += dir * 12;
+      dir = dir === -1 ? 1 : -1;
+      if(Math.abs(ly - pr.sy) > radius + 60) break;
+    }
+    placedLabels.push({x: pr.sx, y: ly});
+    text(bctx, label, pr.sx, ly, 8, '#f0f6e9', 'center');
+  });
+
+  // Captions placed BELOW the 47-px card header band so they stay visible.
+  // Count retained partner-pair coordinate samples once per edge. Cell sample counts
+  // include both pre- and post-synaptic endpoints, so summing them would double-count.
+  const retainedPairs = path.edges.reduce((sum,edge)=>sum + (edge.synapse_coordinate_sample?.length||0), 0);
+  const selectedRows = path.synapse_evidence?.selected_partner_rows || retainedPairs;
+  const minSamples = Math.min(...points.map(p=>p.nSamples||0));
+  const maxSamples = Math.max(...points.map(p=>p.nSamples||0));
+  text(bctx, '3D WIRING · CELL POSITIONS = SAMPLED PATHWAY-SYNAPSE CENTROIDS', 14, 61, 9, '#d7e6d3');
+  text(bctx, `${retainedPairs} OF ${selectedRows} PARTNER ROWS RETAINED · ${minSamples}-${maxSamples} SITE COORDINATES/CELL · X/Y/Z=NATIVE VOXEL AXES`, 14, 75, 7, '#8ea99a');
+  text(bctx, 'EDGE WIDTH = REAL SYNAPSE COUNT · LIME = CHRONOS MODEL RATE ACTIVE · DRAG TO ROTATE', 14, 88, 7, '#748978');
+  text(bctx, `yaw ${(brain3d.yaw*180/Math.PI).toFixed(0)}°  pitch ${(brain3d.pitch*180/Math.PI).toFixed(0)}°`, W-14, H-14, 7, '#607065', 'right');
+}
+
 
 function renderPlaced(data){
   const placed=data.world.sources.filter(source=>source.user_created);
@@ -179,7 +295,7 @@ function drawBlock(data){
   });
   // Counterfactual branches overlay (seeds 1..N → distinct hues).
   if(branchData && branchData.branches){
-    const palette=['#64ddc2','#b28af4','#ffbe58'];
+    const palette=['#64ddc2','#b28af4','#ffbe58','#ff79c6'];  // teal / violet / amber / pink (null wiring)
     branchData.branches.forEach((br,idx)=>{
       const col=palette[idx]||'#8ea99a';
       const traj=br.trajectory;
@@ -315,11 +431,11 @@ if(branchBtn){
   branchBtn.addEventListener('click',()=>{
     if(branchBtn.disabled)return;
     branchBtn.disabled=true; branchBtn.textContent='BRANCHING…';
-    fetch('/api/branches?seeds=1,2,3&steps=120').then(r=>r.json()).then(d=>{
-      branchData=d; branchBtn.textContent='BRANCH ×3'; branchBtn.disabled=false;
+    fetch('/api/branches?seeds=1,2,3,4&steps=120').then(r=>r.json()).then(d=>{
+      branchData=d; branchBtn.textContent='BRANCH ×4'; branchBtn.disabled=false;
       if(clearBranchBtn) clearBranchBtn.hidden=false;
       if(latest&&currentFrame==='block') drawBlock(latest);
-    }).catch(()=>{ branchBtn.textContent='BRANCH FAILED'; branchBtn.disabled=false; setTimeout(()=>branchBtn.textContent='BRANCH ×3',1500); });
+    }).catch(()=>{ branchBtn.textContent='BRANCH FAILED'; branchBtn.disabled=false; setTimeout(()=>branchBtn.textContent='BRANCH ×4',1500); });
   });
 }
 if(clearBranchBtn){
@@ -357,7 +473,7 @@ async function runGuidedDemo(){
     switchTo('block'); await sleep(3500);
     setMsg('STEP 5/6 · LESION · NEW SEGMENTS TURN RED');
     await safeUpdate('lesion'); await sleep(6000);
-    setMsg('STEP 6/6 · THREE COUNTERFACTUAL FUTURES');
+    setMsg('STEP 6/6 · FOUR COUNTERFACTUAL FUTURES');
     $('#branchBtn')?.click(); await sleep(6000);
     setMsg('DEMO COMPLETE · EXPLORE FREELY');
     await sleep(2500);
@@ -369,3 +485,99 @@ async function runGuidedDemo(){
   }
 }
 $('#guidedDemo')?.addEventListener('click', runGuidedDemo);
+
+// Welcome overlay — shown on first load only, dismissible, re-openable with ? or the help button.
+const welcomeEl = $('#welcome');
+function showWelcome(){ if(welcomeEl){ welcomeEl.hidden = false; } }
+function hideWelcome(){ if(welcomeEl){ welcomeEl.hidden = true; } }
+function persistDismissIfChecked(){ try{ if($('#welcomeDismiss')?.checked) localStorage.setItem('chronos.welcome.dismissed','1'); }catch(_){} }
+if(welcomeEl){
+  let dismissed = false;
+  try { dismissed = localStorage.getItem('chronos.welcome.dismissed') === '1'; } catch(_){}
+  if(!dismissed) setTimeout(showWelcome, 450);
+}
+$('#welcomeDemo')?.addEventListener('click', ()=>{ hideWelcome(); persistDismissIfChecked(); runGuidedDemo(); });
+$('#welcomeExplore')?.addEventListener('click', ()=>{ hideWelcome(); persistDismissIfChecked(); });
+$('#helpBtn')?.addEventListener('click', showWelcome);
+
+// Keyboard shortcuts — safe (ignored while typing in an input/textarea).
+document.addEventListener('keydown', (e)=>{
+  const tag = (e.target && e.target.tagName) || '';
+  if(tag === 'INPUT' || tag === 'TEXTAREA') return;
+  const k = e.key.toLowerCase();
+  if(k === 'escape'){ hideWelcome(); return; }
+  if(k === '?' || (e.shiftKey && e.key === '/')) { showWelcome(); return; }
+  if(welcomeEl && !welcomeEl.hidden) return; // don't trigger shortcuts under the modal
+  if(k === 'w') document.querySelector('[data-frame="world"]')?.click();
+  else if(k === 'f') document.querySelector('[data-frame="fly"]')?.click();
+  else if(k === 'b') document.querySelector('[data-frame="block"]')?.click();
+  else if(k === 'g') $('#guidedDemo')?.click();
+  else if(k === 'l') $('#lesion')?.click();
+  else if(k === 'p') $('#pause')?.click();
+  else if(k === 'r') $('#reset')?.click();
+});
+
+// Click-any-neuron inspection — turn each brain group card into a MaleCNS lookup.
+const neuronModal = $('#neuronModal'), neuronContent = $('#neuronContent');
+function showNeuronModal(group, path){
+  const cells = group.nodes.map(i => path.nodes[i]);
+  const touchingEdges = path.edges.filter(e => group.nodes.some(i => path.nodes[i].body === e.pre || path.nodes[i].body === e.post));
+  const edgeRows = touchingEdges.map(e => `<li><b>${e.pre_type}</b> → <b>${e.post_type}</b> · ${e.synapses} synapses · ${e.roi_status||'ROI n/a'}${e.tbar_dominant_prediction ? ' · '+e.tbar_dominant_prediction : ''}</li>`).join('');
+  const cellRows = cells.map(c => `<li>
+    <b>${c.type}</b>
+    <span>MaleCNS body ID · ${c.body}</span>
+    <span>Predicted neurotransmitter · ${c.predicted_nt||'n/a'}${c.nt_confidence!=null ? ' ('+Math.round(c.nt_confidence*100)+'% conf.)' : ''}</span>
+    <span>Live rate · ${(c.rate||0).toFixed(3)}</span>
+    <span>Functional stage · ${c.stage||'n/a'}</span>
+  </li>`).join('');
+  neuronContent.innerHTML = `
+    <h3>${group.label} · ${group.meaning}</h3>
+    <p class="neuron-meaning">MaleCNS supplies the cell IDs, types, weights, ROIs, coordinates, and transmitter predictions. Functional stage and Live rate are CHRONOS model values.</p>
+    <h4>CELLS IN THIS GROUP (${cells.length})</h4>
+    <ul class="neuron-list">${cellRows}</ul>
+    <h4>EDGES TOUCHING THIS GROUP (${touchingEdges.length})</h4>
+    <ul class="neuron-edges">${edgeRows || '<li>No edges in the verified pathway touch this group.</li>'}</ul>
+    <p class="neuron-hint">Click outside this card or press Esc to close.</p>
+  `;
+  neuronModal.hidden = false;
+}
+function hideNeuronModal(){ if(neuronModal) neuronModal.hidden = true; }
+$('#neuronClose')?.addEventListener('click', hideNeuronModal);
+neuronModal?.addEventListener('click', (e)=>{ if(e.target === neuronModal) hideNeuronModal(); });
+let brainPointer = null;
+brainCanvas?.addEventListener('pointerdown', (e)=>{
+  brainPointer = { x:e.clientX, y:e.clientY, startX:e.clientX, startY:e.clientY, moved:false };
+  try{ brainCanvas.setPointerCapture(e.pointerId); }catch(_){}
+});
+brainCanvas?.addEventListener('pointermove', (e)=>{
+  if(!brainPointer) return;
+  const dx = e.clientX - brainPointer.x, dy = e.clientY - brainPointer.y;
+  if(Math.hypot(e.clientX-brainPointer.startX, e.clientY-brainPointer.startY) > 4) brainPointer.moved = true;
+  if(brainMode === 'wiring3d' && brainPointer.moved){
+    brain3d.yaw += dx * 0.01;
+    brain3d.pitch = Math.max(-1.2, Math.min(1.2, brain3d.pitch + dy * 0.01));
+    if(latest) drawBrain(latest);
+  }
+  brainPointer.x = e.clientX; brainPointer.y = e.clientY;
+});
+brainCanvas?.addEventListener('pointerup', (e)=>{
+  const wasDrag = brainPointer && brainPointer.moved;
+  brainPointer = null;
+  if(wasDrag) return;
+  // Click (no drag) in schematic mode → open the clicked group card
+  if(brainMode !== 'schematic' || !latest || !brainGroupsHit.length) return;
+  const r = brainCanvas.getBoundingClientRect();
+  const scaleY = brainCanvas.height / (devicePixelRatio||1) / r.height;
+  const yCss = e.clientY - r.top;
+  const yCanvas = yCss * scaleY;
+  const hit = brainGroupsHit.find(h => yCanvas >= h.y && yCanvas <= h.y + h.cardH);
+  if(hit) showNeuronModal(hit.group, latest.pathway);
+});
+document.querySelectorAll('[data-brain-mode]').forEach(btn => btn.addEventListener('click', ()=>{
+  brainMode = btn.dataset.brainMode;
+  document.querySelectorAll('[data-brain-mode]').forEach(b => b.classList.toggle('active', b===btn));
+  brainCanvas?.closest('.brain-card')?.classList.toggle('wiring3d', brainMode === 'wiring3d');
+  if(latest) drawBrain(latest);
+}));
+// Esc closes neuron modal too
+document.addEventListener('keydown',(e)=>{ if(e.key==='Escape' && neuronModal && !neuronModal.hidden) hideNeuronModal(); });

@@ -120,19 +120,18 @@ def run_pipeline() -> None:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
-    parser.add_argument("--data-dir", type=Path, help="Override the manifest destination")
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--list", action="store_true", help="List inputs without downloading")
     group.add_argument("--verify-only", action="store_true", help="Verify local inputs without downloading")
     group.add_argument("--build-only", action="store_true", help="Skip download and run the rebuild pipeline")
-    parser.add_argument("--download-only", action="store_true", help="Download and verify, but do not rebuild")
+    group.add_argument("--download-only", action="store_true", help="Download and verify, but do not rebuild")
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
     manifest = load_manifest(args.manifest.resolve())
-    data_dir = (args.data_dir or (ROOT / manifest["destination"])).resolve()
+    data_dir = (ROOT / manifest["destination"]).resolve()
     files = manifest["files"]
 
     if args.list:

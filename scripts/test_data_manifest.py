@@ -1,3 +1,4 @@
+import io
 import json
 from pathlib import Path
 import re
@@ -5,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from scripts import prepare_malecns_data
 
@@ -72,6 +74,65 @@ class RawDataManifestTests(unittest.TestCase):
 
             self.assertEqual(destination.read_bytes(), b"verified-source")
             self.assertFalse(part.exists())
+
+    def test_downloader_resumes_from_nonzero_http_range(self):
+        content = b"verified-source"
+        with tempfile.TemporaryDirectory() as directory:
+            destination = Path(directory) / "target.feather"
+            part = destination.with_suffix(".feather.part")
+            part.write_bytes(content[:9])
+            digest = prepare_malecns_data.hashlib.md5(
+                content, usedforsecurity=False
+            ).hexdigest()
+
+            class Response(io.BytesIO):
+                status = 206
+
+                def __enter__(self):
+                    return self
+
+                def __exit__(self, *_):
+                    self.close()
+
+            def respond(request, timeout):
+                self.assertEqual(timeout, 120)
+                self.assertEqual(request.get_header("Range"), "bytes=9-")
+                return Response(content[9:])
+
+            with patch.object(prepare_malecns_data, "urlopen", side_effect=respond):
+                prepare_malecns_data.download(
+                    "https://example.invalid/file", destination, len(content), digest
+                )
+
+            self.assertEqual(destination.read_bytes(), content)
+
+    def test_downloader_restarts_when_server_ignores_range(self):
+        content = b"verified-source"
+        with tempfile.TemporaryDirectory() as directory:
+            destination = Path(directory) / "target.feather"
+            part = destination.with_suffix(".feather.part")
+            part.write_bytes(content[:4])
+            digest = prepare_malecns_data.hashlib.md5(
+                content, usedforsecurity=False
+            ).hexdigest()
+
+            class Response(io.BytesIO):
+                status = 200
+
+                def __enter__(self):
+                    return self
+
+                def __exit__(self, *_):
+                    self.close()
+
+            with patch.object(
+                prepare_malecns_data, "urlopen", return_value=Response(content)
+            ):
+                prepare_malecns_data.download(
+                    "https://example.invalid/file", destination, len(content), digest
+                )
+
+            self.assertEqual(destination.read_bytes(), content)
 
 
 if __name__ == "__main__":

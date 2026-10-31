@@ -27,7 +27,7 @@ Open [http://127.0.0.1:4173/](http://127.0.0.1:4173/). The checked-in portable e
 - Real MaleCNS aggregate edge weights and sampled pathway-synapse coordinates, shown separately from CHRONOS model rates.
 - Lesion/restore controls, recorded worldlines, time scrubbing, and four reproducible counterfactual scenarios.
 
-The portable dataset contains 787 selected partner rows supporting the displayed pathway. Its coordinate positions are **sampled pathway-synapse centroids**, not whole-cell anatomical centroids.
+The portable dataset summarizes 787 selected partner rows and retains 176 sampled coordinate pairs supporting the displayed pathway. Its coordinate positions are **sampled pathway-synapse centroids**, not whole-cell anatomical centroids.
 
 ## Documentation map
 

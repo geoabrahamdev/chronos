@@ -2,6 +2,23 @@
 
 All notable changes to CHRONOS are documented here.
 
+## [1.0.0.1] - 2026-10-31
+
+### Added
+
+- Add contributor, architecture, development, testing, security, and reproducibility guides with GitHub issue and pull-request templates.
+- Add a versioned six-file MaleCNS raw-data manifest and cross-platform resumable download/rebuild command.
+- Test the manifest, offline input listing, local file verification, and the bounded 3D label-placement search.
+
+### Changed
+
+- Make the README a complete entry point for portable use, raw evidence regeneration, validation, contribution, and scientific limitations.
+- Route the PowerShell data preparation command through the same manifest-driven Python pipeline used on macOS and Linux.
+
+### Fixed
+
+- Bound the 3D brain-view label collision search so overlapping labels cannot trap the renderer in an infinite oscillation.
+
 ## [1.0.0.0] - 2026-10-30
 
 ### Added

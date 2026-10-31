@@ -143,6 +143,11 @@ class OpenWorldBehaviorTests(unittest.TestCase):
         self.assertIn("Fork 4 counterfactual futures", source)
         self.assertNotIn("BRANCH ×3", source)
 
+    def test_3d_label_placement_search_is_bounded(self):
+        source = (Path(__file__).resolve().parents[1] / "dist" / "world.js").read_text(encoding="utf-8")
+        self.assertIn("attempt<10", source)
+        self.assertNotIn("while(placedLabels.some", source)
+
 
 if __name__ == "__main__":
     unittest.main()

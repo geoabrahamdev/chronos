@@ -201,12 +201,12 @@ function drawBrain3D(data){
     // Compact single-line label: type and ROI inline. Nudge above or below if colliding with earlier labels.
     const sampledRoi = node.coord && path.edges.find(e=>e.post===node.body)?.primary_post_roi;
     const label = `${node.type}  ${sampledRoi || 'ROI N/A'}`;
-    let ly = pr.sy - radius - 5;
-    let dir = -1;
-    while(placedLabels.some(L => Math.abs(L.y - ly) < 11 && Math.abs(L.x - pr.sx) < 60)){
-      ly += dir * 12;
-      dir = dir === -1 ? 1 : -1;
-      if(Math.abs(ly - pr.sy) > radius + 60) break;
+    const baseLy = pr.sy - radius - 5;
+    let ly = baseLy;
+    for(let attempt=0; attempt<10 && placedLabels.some(L => Math.abs(L.y - ly) < 11 && Math.abs(L.x - pr.sx) < 60); attempt++){
+      const band = Math.floor(attempt/2) + 1;
+      const direction = attempt%2===0 ? -1 : 1;
+      ly = baseLy + direction*band*12;
     }
     placedLabels.push({x: pr.sx, y: ly});
     text(bctx, label, pr.sx, ly, 8, '#f0f6e9', 'center');

@@ -1,0 +1,33 @@
+name: Feature request
+description: Propose a scoped CHRONOS improvement
+title: "feature: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or research question
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Primary layer
+      options:
+        - MaleCNS-derived evidence
+        - CHRONOS model or dynamics
+        - Browser projection or UI
+        - Documentation or tooling
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence, references, or validation plan
+      description: Required for biological or behavioral claims.

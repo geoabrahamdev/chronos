@@ -15,6 +15,7 @@ data/*
 !data/malecns/
 data/malecns/*
 !data/malecns/README.md
+!data/malecns/raw-files.json
 !data/malecns/portable-circuits.json
 !data/malecns/verified-odor-motor-path.json
 !data/malecns/verified-path-validation.json

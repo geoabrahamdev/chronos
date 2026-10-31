@@ -1,0 +1,38 @@
+{
+  "dataset": "HHMI Janelia MaleCNS v1.0",
+  "source_page": "https://male-cns.janelia.org/download/",
+  "base_url": "https://storage.googleapis.com/flyem-male-cns/v1.0/connectome-data/flat-connectome",
+  "destination": "data/malecns",
+  "files": [
+    {
+      "name": "body-annotations-male-cns-v1.0-minconf-0.5.feather",
+      "bytes": 14483314,
+      "md5": "50a7718770c57220f160ba4f431ab89e"
+    },
+    {
+      "name": "body-neurotransmitters-male-cns-v1.0.feather",
+      "bytes": 43282834,
+      "md5": "3d842b12fe5c49eefade528d7dd24a1f"
+    },
+    {
+      "name": "connectome-weights-male-cns-v1.0-minconf-0.5.feather",
+      "bytes": 1051241946,
+      "md5": "f30e9dcca25cfd021bf1e7b3d975599e"
+    },
+    {
+      "name": "syn-partners-male-cns-v1.0-minconf-0.5.feather",
+      "bytes": 6777179098,
+      "md5": "58efcf712f8c4d4de5f2ad51e97def76"
+    },
+    {
+      "name": "syn-points-male-cns-v1.0-minconf-0.5.feather",
+      "bytes": 13061489098,
+      "md5": "c69d08758de07582035cc8843574493a"
+    },
+    {
+      "name": "tbar-neurotransmitters-male-cns-v1.0.feather",
+      "bytes": 2651680218,
+      "md5": "51b02c11690662aedef28f86d394ff0d"
+    }
+  ]
+}

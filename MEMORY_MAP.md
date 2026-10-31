@@ -49,11 +49,13 @@ Never describe the current model as a complete MaleCNS brain simulation.
 | `data/malecns/syn-partners-male-cns-v1.0-minconf-0.5.feather` | Ignored official 6.78 GB synaptic partner-pair table with primary post-synaptic ROI. |
 | `data/malecns/syn-points-male-cns-v1.0-minconf-0.5.feather` | Ignored official 13.06 GB synapse-coordinate and hierarchical ROI table. |
 | `data/malecns/tbar-neurotransmitters-male-cns-v1.0.feather` | Ignored official 2.65 GB per-presynapse transmitter-probability table. |
-| `data/malecns/verified-odor-motor-path.json` | Ignored reproducibly extracted 12-cell / 11-edge MaleCNS pathway used by the bounded rate model. |
-| `data/malecns/verified-synapse-evidence.json` | Ignored compact derivative containing the 787 selected partner rows' summaries, ROI counts, transmitter means, and coordinate samples. |
+| `data/malecns/raw-files.json` | Versioned manifest of the six official downloads, exact sizes, and MD5 identifiers. |
+| `data/malecns/verified-odor-motor-path.json` | Committed reproducibly extracted 12-cell / 11-edge MaleCNS pathway used by the bounded rate model. |
+| `data/malecns/verified-synapse-evidence.json` | Committed compact derivative containing the 787 selected partner rows' summaries, ROI counts, transmitter means, and coordinate samples. |
 | `scripts/extract_verified_odor_motor_path.py` | Revalidates each selected directed edge against the full local graph and joins transmitter predictions. |
 | `scripts/enrich_verified_pathway_synapses.py` | Batch-scans the three large synapse tables and attaches only pathway-specific ROI, coordinate, and transmitter evidence. |
-| `scripts/prepare_malecns_synapse_data.ps1` | Resumable official downloader, exact-size/MD5 verification, enrichment, and validation pipeline. |
+| `scripts/prepare_malecns_data.py` | Cross-platform resumable official downloader, exact-size/MD5 verification, enrichment, and validation pipeline. |
+| `scripts/prepare_malecns_synapse_data.ps1` | Windows wrapper for the same versioned Python pipeline. |
 | `scripts/validate_verified_pathway.py` | Structural and computational validation harness; explicitly does not claim empirical validation. |
 | `.gitignore` | Keeps downloaded connectome files out of Git. |
 
@@ -130,7 +132,7 @@ The public flat connection table gives body-to-body weights. The local 42 MB bod
 
 ## Known limits and pitfalls
 
-- `data/` is intentionally Git-ignored. A new machine must download the annotation, graph, per-neuron transmitter, partner, point, and t-bar Feather files before reproducing all current evidence. The browser reads only compact derived JSON, never the 22.5 GB synapse tables directly.
+- Raw Feather files under `data/malecns/` are intentionally Git-ignored; the portable evidence and raw-file manifest are committed. A new machine needs no raw download to run the app, but must download all six official inputs before regenerating the evidence. The browser reads only compact derived JSON, never the multi-gigabyte synapse tables directly.
 - The world uses normalized coordinates; UI drawing maps them into canvas pixels.
 - The world is now 10x10 model units, not 1x1. Default sources are spatially distributed across ten biomes; user drops accept x/y values within approximately 0.08-9.92 and z values 0-0.72. Camera projection divides coordinates by `WORLD_SPAN` so the full terrain remains visible.
 - The camera is browser-local view state, not part of the simulation state. Default is 45 degrees and 1.0x; `FOLLOW` changes camera focus to the moving fly.

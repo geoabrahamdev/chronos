@@ -106,7 +106,7 @@ Simulation state belongs to the Python server. Camera and observer-frame state r
 | `GET /api/connectome?circuit=compass` | Selected compass circuit summary |
 | `GET /api/connectome?circuit=pathway` | Verified odor-to-motor pathway |
 | `GET /api/worldline` | Recorded trajectory and user intervention pivots |
-| `GET /api/branches?seeds=1,2,3&steps=120` | Experimental deterministic futures |
+| `GET /api/branches?seeds=1,2,3,4&steps=120` | Four bounded experimental futures, including a scrambled-pathway comparison |
 
 ## Validation
 

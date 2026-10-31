@@ -105,6 +105,44 @@ class OpenWorldBehaviorTests(unittest.TestCase):
         self.assertIn("H-55", source)
         self.assertNotIn("H-18,9,'#d4f16b'", source)
 
+    def test_pathway_coordinates_keep_real_sample_counts_and_units(self):
+        coords = server.pathway_cell_coords()
+        pathway = server.verified_pathway()
+        retained_pairs = sum(len(edge["synapse_coordinate_sample"]) for edge in pathway["edges"])
+        self.assertEqual(len(coords), 12)
+        self.assertEqual(retained_pairs, 176)
+        self.assertEqual(pathway["synapse_evidence"]["selected_partner_rows"], 787)
+        self.assertEqual(sum(item["sample_count"] for item in coords.values()), retained_pairs * 2)
+        for item in coords.values():
+            self.assertGreater(item["sample_count"], 0)
+            self.assertTrue(all(-1.0 <= value <= 1.0 for value in item["norm"]))
+            for voxel, nm in zip(item["voxel_8nm"], item["nm"]):
+                self.assertLessEqual(abs(nm - voxel * 8), 4)
+
+    def test_snapshot_exposes_coordinates_and_activity_for_verified_route(self):
+        state = self.world.snapshot(dm1=0.5, va2=0.0, goal="test")
+        self.assertEqual(len(state["pathway"]["nodes"]), 12)
+        self.assertEqual(len(state["pathway"]["edges"]), 11)
+        self.assertTrue(all(node["coord"] for node in state["pathway"]["nodes"]))
+        self.assertTrue(all(isinstance(edge["activity"], (int, float)) for edge in state["pathway"]["edges"]))
+
+    def test_four_counterfactual_branches_are_deterministic_and_isolated(self):
+        before = self.world.snapshot_state()
+        first = self.world.branches([1, 2, 3, 4], 8)
+        second = self.world.branches([1, 2, 3, 4], 8)
+        self.assertEqual(first, second)
+        self.assertEqual(
+            [branch["scenario"] for branch in first["branches"]],
+            ["baseline", "sated", "exhausted", "scrambled_pathway"],
+        )
+        self.assertEqual(self.world.snapshot_state(), before)
+
+    def test_static_branch_copy_matches_four_scenarios(self):
+        source = (Path(__file__).resolve().parents[1] / "dist" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("BRANCH ×4", source)
+        self.assertIn("Fork 4 counterfactual futures", source)
+        self.assertNotIn("BRANCH ×3", source)
+
 
 if __name__ == "__main__":
     unittest.main()

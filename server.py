@@ -42,6 +42,39 @@ def verified_pathway():
     return json.loads(PATHWAY.read_text(encoding="utf-8"))
 
 @lru_cache(maxsize=1)
+def pathway_cell_coords():
+    """Per-cell centroid in native 8-nm voxels, computed from actual synapse samples
+    (HHMI Janelia MaleCNS v1.0 export). Each cell's centroid is the mean of all its pre- and
+    post-synaptic site coordinates recorded across all 11 edges. Also returns a normalized
+    version in [-1,1] preserving aspect ratio, for 3D rendering."""
+    path = verified_pathway()
+    points = {}
+    for edge in path["edges"]:
+        for s in edge.get("synapse_coordinate_sample", []):
+            if "pre" in s:  points.setdefault(edge["pre"],  []).append(tuple(s["pre"]))
+            if "post" in s: points.setdefault(edge["post"], []).append(tuple(s["post"]))
+    centroids_voxel = {b: (sum(p[0] for p in pts)/len(pts), sum(p[1] for p in pts)/len(pts), sum(p[2] for p in pts)/len(pts))
+                       for b, pts in points.items() if pts}
+    if not centroids_voxel:
+        return {}
+    xs = [c[0] for c in centroids_voxel.values()]
+    ys = [c[1] for c in centroids_voxel.values()]
+    zs = [c[2] for c in centroids_voxel.values()]
+    cx_bb, cy_bb, cz_bb = (min(xs)+max(xs))/2, (min(ys)+max(ys))/2, (min(zs)+max(zs))/2
+    max_span = max(max(xs)-min(xs), max(ys)-min(ys), max(zs)-min(zs))
+    scale = (max_span / 2) if max_span > 0 else 1
+    out = {}
+    for b, c in centroids_voxel.items():
+        out[b] = {
+            # MaleCNS v1.0 synapse points are 8-nm voxel indices. Both forms are returned so callers do not need to guess.
+            "voxel_8nm": [round(c[0]), round(c[1]), round(c[2])],
+            "nm":        [round(c[0]*8), round(c[1]*8), round(c[2]*8)],
+            "norm":      [round((c[0]-cx_bb)/scale, 4), round((c[1]-cy_bb)/scale, 4), round((c[2]-cz_bb)/scale, 4)],
+            "sample_count": len(points[b]),
+        }
+    return out
+
+@lru_cache(maxsize=1)
 def pathway_validation():
     return json.loads(VALIDATION.read_text(encoding="utf-8"))
 
@@ -233,15 +266,18 @@ class OpenWorld:
 
         We deliberately use unsigned gains: transmitter predictions alone do not
         establish receptor-specific excitatory/inhibitory sign at each synapse.
+        A branch may override edge weights to run a null-model comparison.
         """
         path=verified_pathway(); nodes=path["nodes"]; edges=path["edges"]
-        max_weight=max(edge["synapses"] for edge in edges)
+        override=getattr(self,"_weight_override",None)
+        weights=override if override is not None else [edge["synapses"] for edge in edges]
+        max_weight=max(weights) if weights else 1
         old=self.pathway_rates; new={}
         first=nodes[0]["body"]
         new[first]=clamp(old[first]*.62+dm1_drive*.70)
-        for edge in edges:
+        for i,edge in enumerate(edges):
             pre,post=edge["pre"],edge["post"]
-            gain=.18+.82*(edge["synapses"]/max_weight)
+            gain=.18+.82*(weights[i]/max_weight)
             new[post]=clamp(old[post]*.70+new[pre]*gain*.58)
         self.pathway_rates=new
         return new[edges[-1]["post"]]
@@ -386,25 +422,34 @@ class OpenWorld:
         self.trail_history=copy.deepcopy(snap["trail_history"])
         self.pivots=copy.deepcopy(snap["pivots"])
     def branches(self, seeds, steps):
-        """Three honestly-named counterfactual futures from the current tick.
-        branch 0 = baseline   (same state, mild noise)
-        branch 1 = compass_flip (toggled lesion state — disorientation or recovery)
-        branch 2 = sated      (hunger/thirst/fatigue dropped so fly explores freely)
+        """Four honestly-named counterfactual futures from the current tick.
+        branch 0 = baseline           (same state, seeded stochastic choices)
+        branch 1 = sated              (hunger/thirst/fatigue reduced)
+        branch 2 = exhausted          (fatigue elevated)
+        branch 3 = scrambled_pathway  (same weights, randomly reassigned to edges)
         Each runs in a sandbox clone; the live world is never mutated.
         """
         snap=self.snapshot_state()
+        def _scramble_pathway(b):
+            # Null comparison: preserve the observed weight distribution but randomly
+            # reassign weights to edges. World goals, compass, and hazard policy stay intact.
+            weights=[e["synapses"] for e in verified_pathway()["edges"]]
+            random.shuffle(weights)
+            b._weight_override = weights
         scenarios=[
             ("baseline",     lambda b: None),
             ("sated",        lambda b: b.needs.update(hunger=0.08,thirst=0.08,fatigue=0.08)),
             ("exhausted",    lambda b: b.needs.update(hunger=0.2,thirst=0.2,fatigue=0.95)),
+            ("scrambled_pathway", _scramble_pathway),
         ]
         results=[]
         for i, seed in enumerate(seeds[:len(scenarios)]):
             name, perturb = scenarios[i]
             branch=OpenWorld.__new__(OpenWorld); branch.lock=threading.RLock()
-            branch.restore_state(snap); perturb(branch)
+            branch.restore_state(snap)
             saved=random.getstate(); random.seed(int(seed)*1000+i)
             try:
+                perturb(branch)
                 trajectory=[]; now=branch.last
                 for _ in range(steps):
                     now+=0.12
@@ -431,7 +476,7 @@ class OpenWorld:
             transmitter=(f"{tbar_nt} / per-synapse prediction" if tbar_nt and tbar_nt!="unavailable" else "per-neuron prediction")
             active.append({**edge,"neuropil":edge["roi_status"],"neurotransmitter":transmitter,"activity":round(self.pathway_rates[edge["post"]]*edge["synapses"],2),"module":"verified_pathway"})
         home=self.world["home"]; vector=[round(home[0]-f["x"],3),round(home[1]-f["y"],3),round(home[2]-f["z"],3)]
-        pathway={**path,"motor_drive":round(motor_drive,3),"validation":pathway_validation(),"nodes":[{**node,"rate":round(self.pathway_rates[node["body"]],3)} for node in path["nodes"]]}
+        coords=pathway_cell_coords(); pathway={**path,"motor_drive":round(motor_drive,3),"validation":pathway_validation(),"nodes":[{**node,"rate":round(self.pathway_rates[node["body"]],3),"coord":coords.get(node["body"])} for node in path["nodes"]],"edges":[{**edge,"activity":round(self.pathway_rates[edge["post"]]*edge["synapses"],2)} for edge in path["edges"]]}
         synapse_data=synapse_data_status()
         if self.interaction:
             progress=clamp((time.monotonic()-self.interaction["started_at"])/self.interaction["duration"])
@@ -481,7 +526,7 @@ class Handler(SimpleHTTPRequestHandler):
         if parsed.path=="/api/branches":
             q=parse_qs(parsed.query)
             try:
-                seeds=[int(s) for s in q.get("seeds",["1,2,3"])[0].split(",") if s.strip()]
+                seeds=[int(s) for s in q.get("seeds",["1,2,3,4"])[0].split(",") if s.strip()]
                 steps=min(400,max(1,int(q.get("steps",["120"])[0])))
             except (ValueError,TypeError): return self.reply({"error":"invalid params"},HTTPStatus.BAD_REQUEST)
             with WORLD.lock: return self.reply(WORLD.branches(seeds,steps))
